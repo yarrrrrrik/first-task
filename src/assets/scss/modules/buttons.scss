@@ -1,0 +1,179 @@
+.custom-radio {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+  }
+  /* для элемента label связанного с .custom-radio */
+  .custom-radio+label {
+    display: inline-flex;
+    align-items: center;
+    user-select: none;
+  }
+  /* создание в label псевдоэлемента  before со следующими стилями */
+  .custom-radio+label::before {
+    content: '';
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    flex-shrink: 0;
+    flex-grow: 0;
+    border: 1px solid #adb5bd;
+    border-radius: 50%;
+    margin-right: 0.5em;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 50% 50%;
+  }
+  /* стили при наведении курсора на радио */
+  .custom-radio:not(:disabled):not(:checked)+label:hover::before {
+    border-color: #b3d7ff;
+  }
+  /* стили для активной радиокнопки (при нажатии на неё) */
+  .custom-radio:not(:disabled):active+label::before {
+    background-color: #b3d7ff;
+    border-color: #b3d7ff;
+  }
+
+  /* стили для радиокнопки, находящейся в фокусе и не находящейся в состоянии checked */
+  .custom-radio:focus:not(:checked)+label::before {
+    border-color: #80bdff;
+  }
+  /* стили для радиокнопки, находящейся в состоянии checked */
+  .custom-radio:checked+label::before {
+      border: 4px solid #ffffff;
+  background: -webkit-linear-gradient(#BC9CFF 0%, #8BA4F9 100%);
+  background: -o-linear-gradient(#BC9CFF 0%, #8BA4F9 100%);
+  background: linear-gradient(#BC9CFF 0%, #8BA4F9 100%);
+  box-shadow: 0 0 0 1px #BC9CFF;
+  color:black;
+
+    }
+  /* стили для радиокнопки, находящейся в состоянии disabled */
+  .custom-radio:disabled+label::before {
+    background-color: #e9ecef;
+  }
+
+
+
+  .custom-checkbox {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+  }
+
+  .custom-checkbox+label {
+    display: inline-flex;
+    align-items: center;
+    user-select: none;
+  }
+
+  .custom-checkbox+label::before {
+    content: '';
+    display: inline-block;
+    flex-shrink: 0;
+    flex-grow: 0;
+    border: 1px solid #adb5bd;
+    border-radius: 0.25em;
+    margin-right: 10px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 50% 50%;
+    width: 20px;
+    height: 20px;
+  }
+
+  .custom-checkbox:checked+label::before {
+    border: 1px solid #BC9CFF;
+    background-size: 0.8rem;
+    background-position: center;
+    background-image: url("../img/Vector.png");
+  }
+
+  .toggle-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+  .toggle-button {
+ position: relative;
+ display: inline-block;
+ width: 40px;
+ height: 20px;
+ margin: 0;
+ vertical-align: top;
+ background: #ffffff;
+ border-radius: 30px;
+ outline: none;
+ cursor: pointer;
+ -webkit-appearance: none;
+ -moz-appearance: none;
+ appearance: none;
+ transition: all 0.5s cubic-bezier(0.2, 0.85, 0.32, 1.2);
+ border: 1px solid rgba(31, 32, 65, 0.25);
+
+}
+.toggle-button::after {
+  content: "";
+
+  display: inline-block;
+  position: absolute;
+  left: 3px;
+  top: 3px;
+
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(31, 32, 65, 0.25);
+  transform: translateX(0);
+  transition: all 0.5s cubic-bezier(0.2, 0.85, 0.32, 1.2);
+
+}
+.toggle-button:checked::after {
+  transform: translateX(calc(100% + 8px));
+  background: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%);
+  transition: all 0.5s cubic-bezier(0.2, 0.85, 0.32, 1.2);
+
+}
+.toggle-button:checked {
+  transition: all 0.5s cubic-bezier(0.2, 0.85, 0.32, 1.2);
+  border: 1px solid #BC9CFF;
+
+}
+
+.heart {
+  display: inline-block;
+  height: 7px;
+  width: 7px;
+  margin-top: 6px;
+  margin-right: 5px;
+
+  // position: absolute;
+  // left: 45%; top: 45%;
+
+  background-color:#BC9CFF;
+
+
+  transform: rotate(-45deg);
+}
+
+.heart:before,
+.heart:after {
+  content: "";
+
+  position: absolute;
+  height: 7px;
+  width: 7px;
+
+  background-color:#BC9CFF;
+  border-radius: 50%;
+}
+
+.heart:before {
+  top: -3px;
+  left: 0;
+}
+
+.heart:after {
+  left: 3px;
+  top: 0;
+}

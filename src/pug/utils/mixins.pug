@@ -1,0 +1,150 @@
+- var itemsDropDown = ['Спальни','Кровати','Ванные комнаты']
+mixin itemDropdown(descr)
+  .itemDropdown
+    p= descr
+    .count
+      p -
+      p 0
+      p +
+      
+mixin checkbox(i,name,array)
+  div(class='checkbox_item')
+    input(type='checkbox' class='custom-checkbox' id=`${name}${array.indexOf(i)}`)
+    label(for=`${name}${array.indexOf(i)}`)= i
+    
+mixin commonInput(title,text,className)
+  div(class='commonInput' class=className)
+    h3= title
+    input(type='text',placeholder=text)
+      
+mixin dropDown(title,text,className)
+  div(class='commonInput' class='dropDown arrow' class=className)
+    h3= title
+    input(type='text',placeholder=text)
+
+mixin email(title,text,className)
+  div(class='commonInput' class='emailInput arrow' class=className)
+    h3= title
+    input(type='text',placeholder=text)
+
+mixin dropDownExpand(title,text,className,items)
+  div(class='commonInput dropDown dropDownExpand arrow'  class=className style='margin-bottom:102px' )
+    h3= title
+    input(type='text',placeholder=text)
+    .itemsDropDown 
+      for i in itemsDropDown
+        +itemDropdown(i)
+
+mixin expandableCheckbox(hidden,array)
+  div(class='checkboxList arrow')
+    p Expandable checkbox list
+    if hidden
+      div(class='checkboxItems hidden')
+        for i in itemsCheckBoxExpand
+          +checkbox(i,'checkboxExpandHidden',array)
+    else 
+      div(class='checkboxItems')
+        for i in itemsCheckBoxExpand
+          +checkbox(i,'checkboxExpand',array)
+          
+mixin advantage(img,title,desc)
+  .advantage
+    img(src=img)
+    .desc
+      h3= title
+      p= desc
+          
+mixin checkboxButtons(title,array)
+  .checkbox_buttons
+    h3= title
+    .checkboxItems
+      for i in itemsCheckBox
+        +checkbox(i,'checkboxButtons',array)
+
+mixin radioButtons(title)
+  .radio_buttons
+    h3= title
+    .radio_button
+      input(type='radio' class='custom-radio' name='name' value='val' id='id')
+      label(for='id') Мужчина
+    .radio_button
+      input(type='radio' class='custom-radio' name='name' value='val' id='id1')
+      label(for='id1') Женщина
+      
+mixin toggleButtons(title)
+  .toggle_buttons
+    h3= title
+    .toggle_button
+      input(type="checkbox" id="toggle-button" class="toggle-button")
+      label(for="toggle-button" class="text") Получать спецпредложения
+    .toggle_button
+      input(type="checkbox" id="toggle-button" class="toggle-button")
+      label(for="toggle-button" class="text") Получать спецпредложения
+
+mixin likeButtons(title)
+  .like_buttons
+    h3= title
+    .like_button
+      .heart
+      p 12
+    div(class='like_button like_button_enable')
+      .heart
+      p 12
+mixin rateButtons(title)
+  .rate_buttons
+    h3= title
+    .rate_button
+      img(src='assets/img/star.svg')
+      img(src='assets/img/star.svg')
+      img(src='assets/img/star.svg')
+      img(src='assets/img/star.svg')
+      img(src='assets/img/star.svg')
+    .rate_button
+      img(src='assets/img/star.svg')
+      img(src='assets/img/star.svg')
+      img(src='assets/img/star.svg')
+      img(src='assets/img/star.svg')
+      img(src='assets/img/star.svg')
+    
+mixin rangeSlider(title,range)
+  .range_slider
+    h3= title
+    p= range
+    .range_line
+      .segment
+      div(class='segment segment_active')
+      .segment
+      
+mixin buttons(title,text)
+  .buttons
+    h3= title
+    .buttons_block
+      button(class='first_button button')= text
+      button(class='second_button button')= text
+      button(class='third_button button')= text
+      button(class='fourth_button button')= text
+      .buttons_block_second
+        button(class='first_button_noborder button')= text
+        button(class='second_button_noborder button')= text
+      button(class='big_button button') Перейти к оплате
+
+mixin pagination(title,text)
+  .pagination
+    h3= title
+    .pages
+      button(class='active_page button')= 1
+      button(class='nonActive_page button')= 2
+      button(class='nonActive_page button')= 3
+      button(class='nonActive_page button')= '...'
+      button(class='nonActive_page button')= 15
+      button(class='next_page button')= '1'
+    p= text
+
+mixin dropDownExpandAccept(title,text,className,items)
+  div(class='commonInput dropDown dropDownExpand arrow'  class=className style='margin-bottom:102px' )
+    h3= title
+    input(type='text',placeholder=text)
+    .itemsDropDown 
+      for i in itemsDropDown
+        +itemDropdown(i)
+      button(class='first_button_noborder button')= применить
