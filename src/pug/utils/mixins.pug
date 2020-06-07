@@ -1,4 +1,5 @@
 - var itemsDropDown = ['Спальни','Кровати','Ванные комнаты']
+
 mixin itemDropdown(descr)
   .itemDropdown
     p= descr
@@ -16,7 +17,42 @@ mixin commonInput(title,text,className)
   div(class='commonInput' class=className)
     h3= title
     input(type='text',placeholder=text)
+    
+mixin radioButton(id,val,i)
+  .radio_button
+    input(type='radio' class='custom-radio' name='name' value='val' id=`${id}${i}`)
+    label(for=`${id}${i}`)= val
+    
+mixin toggleButton(id,val,i)
+  .toggle_button
+    input(type="checkbox" id=`${id}${i}` class="toggle-button")
+    label(for=`${id}${i}` class="text")= val
+    
+mixin rateButton()
+  .rate_button
+    img(src='assets/img/star.svg')
+    img(src='assets/img/star.svg')
+    img(src='assets/img/star.svg')
+    img(src='assets/img/star.svg')
+    img(src='assets/img/star.svg')
       
+mixin likeButton(enable)
+  if enable
+    .like_button
+      .heart
+      p 12
+  else
+    div(class='like_button like_button_enable')
+      .heart
+      p 12
+  
+mixin button(text,big,type)
+  if big
+    button(class='big_button button')= text
+  else
+    button(class=`${type}_button button`)= text
+    
+  
 mixin dropDown(title,text,className)
   div(class='commonInput' class='dropDown arrow' class=className)
     h3= title
@@ -37,14 +73,14 @@ mixin dropDownExpand(title,text,className,items)
 
 mixin expandableCheckbox(hidden,array)
   div(class='checkboxList arrow')
-    p Expandable checkbox list
+    h3 Expandable checkbox list
     if hidden
       div(class='checkboxItems hidden')
-        for i in itemsCheckBoxExpand
+        for i in array
           +checkbox(i,'checkboxExpandHidden',array)
     else 
       div(class='checkboxItems')
-        for i in itemsCheckBoxExpand
+        for i in array
           +checkbox(i,'checkboxExpand',array)
           
 mixin advantage(img,title,desc)
@@ -58,53 +94,32 @@ mixin checkboxButtons(title,array)
   .checkbox_buttons
     h3= title
     .checkboxItems
-      for i in itemsCheckBox
+      for i in array
         +checkbox(i,'checkboxButtons',array)
 
-mixin radioButtons(title)
+mixin radioButtons(title,id,array)
   .radio_buttons
     h3= title
-    .radio_button
-      input(type='radio' class='custom-radio' name='name' value='val' id='id')
-      label(for='id') Мужчина
-    .radio_button
-      input(type='radio' class='custom-radio' name='name' value='val' id='id1')
-      label(for='id1') Женщина
+    for i in array
+      +radioButton(id,i,array.indexOf(i))
       
-mixin toggleButtons(title)
+mixin toggleButtons(title,id,array)
   .toggle_buttons
     h3= title
-    .toggle_button
-      input(type="checkbox" id="toggle-button" class="toggle-button")
-      label(for="toggle-button" class="text") Получать спецпредложения
-    .toggle_button
-      input(type="checkbox" id="toggle-button" class="toggle-button")
-      label(for="toggle-button" class="text") Получать спецпредложения
+    for i in array
+      +toggleButton(id,i,array.indexOf(i))
 
 mixin likeButtons(title)
   .like_buttons
     h3= title
-    .like_button
-      .heart
-      p 12
-    div(class='like_button like_button_enable')
-      .heart
-      p 12
+    +likeButton()
+    +likeButton(true)
+
 mixin rateButtons(title)
   .rate_buttons
     h3= title
-    .rate_button
-      img(src='assets/img/star.svg')
-      img(src='assets/img/star.svg')
-      img(src='assets/img/star.svg')
-      img(src='assets/img/star.svg')
-      img(src='assets/img/star.svg')
-    .rate_button
-      img(src='assets/img/star.svg')
-      img(src='assets/img/star.svg')
-      img(src='assets/img/star.svg')
-      img(src='assets/img/star.svg')
-      img(src='assets/img/star.svg')
+    +rateButton
+    +rateButton
     
 mixin rangeSlider(title,range)
   .range_slider
@@ -140,11 +155,54 @@ mixin pagination(title,text)
       button(class='next_page button')= '1'
     p= text
 
-mixin dropDownExpandAccept(title,text,className,items)
-  div(class='commonInput dropDown dropDownExpand arrow'  class=className style='margin-bottom:102px' )
+mixin dropDownExpandAccept(title,text,className,array,clean)
+  div(class='commonInput dropDown dropDownExpand dropDownExpandAccept arrow'  class=className style='margin-bottom:102px' )
     h3= title
     input(type='text',placeholder=text)
     .itemsDropDown 
-      for i in itemsDropDown
+      for i in array
         +itemDropdown(i)
-      button(class='first_button_noborder button')= применить
+      .accept_buttons
+        if clean
+          button(class='first_button_noborder button button_dropdown button_dropdown_clean ' style='color:white') очистить
+        else
+          button(class='first_button_noborder button button_dropdown button_dropdown_clean ') очистить
+          
+        button(class='first_button_noborder button button_dropdown') применить
+        
+mixin richCheckbox(title,names,descs)
+  .rich-checkbox-buttons
+    h3= title
+    div(class='checkbox_item checkbox_item_rich')
+      input(type='checkbox' class='custom-checkbox' id='pupa')
+      label(for='pupa') Широкий коридор
+      p Ширина коридоров в номере не менее 91см
+    div(class='checkbox_item checkbox_item_rich')
+      input(type='checkbox' class='custom-checkbox' id='pupa')
+      label(for='pupa') Помощник для инвалидов
+      p На 1 этаже вас встретит специалист  и проводит до номера.
+      
+mixin bulletList(title)
+  .bullet-list
+    h3= title
+    p Нельзя с питомцами
+    p Без вечеринок и мероприятий
+    p Время прибытия — после 13:00,а выезд до 12:00
+    
+
+mixin review(name,date)
+  .review
+    .review_header
+      img(src='assets/img/image.png')
+      .name-date-block
+        p(class='review_name')= name
+        p= date
+    .review_main
+      +likeButton(true)
+      p Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей.
+    
+
+
+
+    //- input(type='checkbox' class='custom-checkbox' id=`${name}${array.indexOf(i)}`)
+    //- label(for=`${name}${array.indexOf(i)}`)= i

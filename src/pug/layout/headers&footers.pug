@@ -1,0 +1,13 @@
+include ../utils/mixins
+include ../utils/headers&footers-mixins
+
+
+
+doctype html
+html(lang='en')
+  body(class='headers-footers')
+    +header(false)
+    +header(true)
+    +footerBig
+    +footer
+    

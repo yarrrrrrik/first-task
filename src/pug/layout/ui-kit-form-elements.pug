@@ -3,11 +3,13 @@ include ../utils/mixins
 - var itemsCheckBoxExpand = ['Завтрак','Письменный стол','Стул для кормления','Кроватка','Телевизор','Шампунь','Телевизор','Шампунь']
 - var itemsCheckBox = ['Можно курить','Можно с питомцами','Можно пригласить гостей (до 10 человек)']
 - var itemsDropdownExpandAccept = ['Взрослые','Дети','Младенцы']
+- var itemsRadio = ['Мужчина','Женщина']
+- var itemsToggle = ['Получать спецпредложения','Получать спецпредложения']
+
 doctype html
 html(lang='en')
   body(class='UI-kit')
-  .firstColumn
-    .firstBlock
+    .first_block
       +commonInput('Text field','Email','textField')
       +dropDown('Dropdown','Сколько гостей...')
       +commonInput('Masked text field','ДД.ММ.ГГГГ')
@@ -15,28 +17,38 @@ html(lang='en')
         +dropDown('Date dropdown','ДД.ММ.ГГГГ','small_input')
         +dropDown('Date dropdown','19.08.2019','small_input')
       +email('Subscription text field','Email')
-    .secondBlock
+      
+    .second_block
+      +checkboxButtons('Checkbox buttons',itemsCheckBox)
+      +radioButtons('Radio buttons','radio-template',itemsRadio)
+      +toggleButtons('Toggle','toggle-template',itemsToggle)
+      +likeButtons('Like button')
+      +rateButtons('Rate button')
+      
+    .third_block
+      +rangeSlider('Range slider','5 000Р - 10 000')
+      +buttons('buttons','CLICK ME')
+      +pagination('Pagination','1-12 из 100+ вариантов аренды')
+      
+    .fourth_block
       +dropDown('Dropdown','2 спальни, 2 кровати...')
       +dropDownExpand('Dropdown','2 спальни, 2 кровати...',itemsDropDown)
+      
+      
+    .fifth_block
+      +dropDownExpandAccept('Dropdown','Сколько гостей','',itemsDropdownExpandAccept)
+      +dropDownExpandAccept('Dropdown','Сколько гостей','',itemsDropdownExpandAccept,true)
+    
+    .sixth_block
       +expandableCheckbox(true,itemsCheckBoxExpand)
       +expandableCheckbox(false,itemsCheckBoxExpand)
       +advantage('assets/img/insert_emoticon.svg','Комфорт','Шумопоглощающие стены')
       +advantage('assets/img/location_city.svg','Удобство','Окно в каждой из стен')
+    .seventh_block
+      +richCheckbox('Rich checkbox buttons')
+      +bulletList('Bullet list')
+      +review('Мурад Сарафанов','5 дней назад')
       
-  .secondColumn
-    .thirdBlock
-      +checkboxButtons('Checkbox buttons',itemsCheckBox)
-      +radioButtons('Radio buttons')
-      +toggleButtons('Toggle')
-      +likeButtons('Like button')
-      +rateButtons('Rate button')
-  .thirdColumn
-    +rangeSlider('Range slider','5 000Р - 10 000')
-    +buttons('buttons','CLICK ME')
-    +pagination('Pagination','1-12 из 100+ вариантов аренды')
-  .fourthBlock
-    +dropDownExpandAccept('Dropdown','Сколько гостей','',itemsDropdownExpandAccept)
-  
   
   
   

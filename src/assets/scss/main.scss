@@ -3,8 +3,16 @@
 @import "utils/mixins";
 @import "utils/fonts";
 @import "utils/reset";
-@import 'modules/ui-kit.scss';
+@import 'modules/ui-kit-form-elements.scss';
+@import 'modules/ui-kit-cards.scss';
 @import 'modules/buttons.scss';
+@import 'modules/headers&footers.scss';
+@import 'modules/template.scss';
+
+*{
+  // font-family: Montserrat;
+  // font-style: normal;
+}
 
 html {
   line-height: $mainLineHeight;

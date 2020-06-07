@@ -1,0 +1,14 @@
+include ../utils/mixins
+include ../utils/card-mixins
+
+doctype html
+html(lang='en')
+  body(class='UI-kit-cards')
+    +findApartments('Найдём номера под ваши пожелания')
+    +signUp('Регистрация аккаунта')
+    +apartmentInfo()
+    +signIn('Войти')
+    +calendar
+    +apartmentCard('assets/img/Mask-Group-1.png','888',true,'9990','first')
+    +apartmentCard('assets/img/Mask-Group-1.png','840',false,'9900','second')
+    

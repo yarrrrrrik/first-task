@@ -1,0 +1,15 @@
+include ../utils/mixins
+include ../utils/card-mixins
+include ../utils/headers&footers-mixins
+
+
+block variables
+
+doctype html
+html(lang="en")
+  head
+    title= pageTitle
+  body(class='template')
+    +header(false)
+    block content
+    +footerBig

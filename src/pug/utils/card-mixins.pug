@@ -1,0 +1,112 @@
+include mixins
+
+-var calendar = ['Пн','Вт','Ср','Чт','Пт','Сб','Вс']
+
+mixin apartmentNumber(numb,isLuxury,cost)
+  div(class='apartment-card__header')
+    p № 
+      strong= numb
+      if isLuxury
+        span  люкс
+    span(class='right-part-header')= cost + 'P' 
+      p ⠀в сутки
+
+mixin findApartments(title,items)
+  div(class='find-apartments-card card')
+    h1= title
+    .drops
+      +dropDown('Прибытие','ДД.ММ.ГГГГ','small_input')
+      +dropDown('Выезд','19.08.2019','small_input')
+    if items
+      +dropDownExpand('Гости','Сколько гостей','find-apartments-dropdown',items)
+    else
+      +dropDown('Гости','Сколько гостей','find-apartments-dropdown')
+    +button('Подобрать номер',true)
+
+mixin signUp(title)
+  div(class='sign-up card')
+    h1= title
+    +commonInput('','Имя')
+    +commonInput('','Фамилия')    
+    .radio_buttons
+      +radioButtons('','male_female',['Мужчина','Женщина'])
+    +dropDown('Дата рождения','ДД.ММ.ГГГГ')
+    +commonInput('Данные для входа в сервис','Email','info-for-signup')
+    +commonInput('','Пароль')
+    +toggleButton('toggle_offers','Получать спецпредложения',[1])
+    +button('Перейти к оплате',true)
+    .signup-footer
+      p Уже есть аккаунт на Toxin
+      +button('Войти',false,'third')
+      
+mixin apartmentInfo
+  div(class='apartment-card card')
+    +apartmentNumber(888,true,9900)
+    //- div(class='apartment-card__header')
+    //-   p № 
+    //-     strong 888
+    //-     span люкс
+    //-   span(class='right-part-header') 9900Р 
+    //-     p ⠀в сутки
+    .drops
+      +dropDown('Прибытие','19.08.2019','small_input')
+      +dropDown('Выезд','23.08.2019','small_input')
+    +dropDown('Гости','3 гостя')
+    .apartment-cost
+      .apartment-cost-item
+        p 9900P х 4 суток
+        p 39960Р
+      .apartment-cost-item
+        p Сбор за услуги: скидка 2 179Р
+        p 0P
+      .apartment-cost-item
+        p Сбор за дополнительные услуги
+        p 300Р
+    .apartment-cost-amount
+      span Итого
+      span 38 081Р
+    +button('Забронировать',true)
+    
+mixin signIn(title)
+  div(class='sign-in-card card')
+    h1= title
+    +commonInput('','Email')
+    +commonInput('','Password')
+    +button('Войти',true)
+    .signin-footer
+      p Нет аккаунта на Toxin
+      +button('Создать',false,'third')
+
+mixin calendar
+  div(class='calendar-card card')
+    h1 Август 2019
+    .calendar-main
+      for i in calendar
+        +button(i,false,'week-day small')
+      +button(30,false,'small')
+      +button(30,false,'small')
+      +button(30,false,'small')
+      -  for (let i = 1;i <32;++i)
+          if(i == 8)
+            +button(i,false,'day-current small')
+          else if (i == 19)
+            +button(i,false,'day-active day-active-start small')
+          else if (i == 23)
+            +button(i,false,'day-active day-active-end small')
+          else if (i > 19 && i < 23)
+            +button(i,false,'day-segment small')
+          else
+            +button(i,false,'small')
+      +button(2,false,'small')
+      .accept_buttons
+        button(class='first_button_noborder button button_dropdown button_dropdown_clean ') очистить
+      
+        button(class='first_button_noborder button button_dropdown') применить
+        
+mixin apartmentCard(src,number,luxury,cost,className)
+  div(class='apartment-card-mini' class=`apartment-card-${className}` )
+    img(src= src)
+    +apartmentNumber(number,luxury,cost)
+    .apartment-card-footer
+      +rateButton
+      p 145 Отзывов

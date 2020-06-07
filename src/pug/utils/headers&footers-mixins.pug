@@ -1,0 +1,65 @@
+include mixins
+
+
+mixin header(isLoggedIn)
+  .header
+    .wrapper
+      .header-logo
+        img(src='assets/img/Logo_2.png')
+      nav(class='nav')
+        a Home
+        a About us
+        a(class='arrow') Services
+        a Careers
+        a News
+        a Documentation
+      if isLoggedIn
+        p Cosmin Negoita
+      else
+        +button('login',false,'third')
+        +button('register',false,'first')
+
+mixin footerBig
+  .footer-big
+    .wrapper
+      div(class='footer__info footer-column')
+        img(src='assets/img/Logo_2.png')
+        p Lorem ipsum dolor sit amet consectetur adipiscing elit aliquam eget nullam pellentesque aliquam curabitur cociis.
+      div(class='footer__nav footer-column')
+        h3 Aavigaton
+        a About us
+        a News
+        a Support
+        a Products
+      div(class='footer__about-us footer-column')
+        h3 About us
+        a Who we are
+        a Our team
+        a Careers
+        a Investors
+      div(class='footer__support footer-column')
+        h3 Support
+        a Documentation
+        a Community
+        a Get in touch
+      div(class='footer__subscribe footer-column')
+        h3 Subscribe to our newsletter
+        p Receive our latest news and promotions in your inbox!
+        +commonInput('','Your email address','footer__subscribe__input arrow')
+    .footer__footer
+      p(class='copyright') Copyright © 2018 Toxin UI Kit. All rights reserved.
+      .links
+        img(src='assets/img/facebook.png')
+        img(src='assets/img/facebook.png')
+        img(src='assets/img/facebook.png')
+        
+mixin footer
+  .footer
+    img(src='assets/img/Logo_2.png' class='footer__logo')
+    p Lorem ipsum dolor sit amet consectetur adipiscing elit aliquam eget nullam pellentesque aliquam curabitur cociis.
+    .links
+      img(src='assets/img/facebook.png')
+      img(src='assets/img/facebook.png')
+      img(src='assets/img/facebook.png')
+          
+      

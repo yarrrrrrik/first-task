@@ -1,0 +1,116 @@
+.template{
+  width: 100%;
+  .calendar-card{
+    position: absolute;
+    top:190px;
+    left:30px;
+  }
+}
+.card{
+  max-height: 380px;
+}
+.main{
+  background: url('../img/image_3.png');
+  width: 100%;
+  height: 830px;
+  padding-top: 70px;
+}
+.find-apartments-card{
+  max-height: 380px;
+}
+.main__content{
+position: relative;
+}
+
+.dropDownExpand{
+  z-index: 10;
+  background: white;
+  margin-bottom: 0px !important;
+  .itemsDropDown{
+    position: absolute;
+    background: white;
+    width: 100%;
+  }
+  // position: absolute;
+  // opacity: 0;
+}
+
+.main-2{
+  position: relative;
+
+  width: 100%;
+  min-height: 1200px;
+  padding-top: 30px;
+  .range_slider{
+  }
+  .commonInput{
+    width: 100%;
+  }
+  .wrapper{
+    width:90%;
+  }
+  .pagination{
+    position: absolute;
+    top:97%;
+    left:40%;
+  }
+}
+
+.main-2__sidebar{
+  width:25%;
+}
+
+.main-2__content{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 70%;
+  h1{
+    width: 100%;
+    max-width: none;
+  }
+
+  .apartment-card-mini{
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.main-4{
+  width: 100%;
+  height: 702px;
+  background: url('../img/image-4_1.png');
+  padding-top: 30px;
+  .card{
+    margin: 0 auto;
+  }
+  .sign-in-card{
+    max-width: 380px;
+    margin-top: 168px;
+  }
+}

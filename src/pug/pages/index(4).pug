@@ -1,0 +1,20 @@
+extends ../layout/template
+//- index 4
+
+block content
+  .main-2
+    .wrapper
+      .main-2__sidebar
+        +dropDown('Даты пребывания в отеле','19 авг - 23 авг')
+        +dropDown('Гости','3 гостя 1 младенец')
+        +rangeSlider('Диапазон цены','5000Р - 10000Р')
+        +checkboxButtons('Checkbox buttons',['Можно курить','Можно с питомцами','Можно пригласить гостей (до 10 человек)'])
+        +richCheckbox('Доступность')
+        +dropDown('Удобства номера','2 спальни,2 кровати')
+        +expandableCheckbox(true,['1','2'])
+      .main-2__content
+        h1 Номера, которые мы для вас подобрали
+        - for (let i = 0; i < 12 ; i++ )
+          +apartmentCard('assets/img/Mask-Group-1.png','888',true,'9990','first')
+      +pagination('','1 – 12 из 100+ вариантов аренды')
+      
